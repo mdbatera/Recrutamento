@@ -1,10 +1,10 @@
 <?php 
-include('../../classes/tab_candidato.class.php');
+include('../classes/tab_candidato.class.php');
 //Cria o Objeto
 $c = new Tab_candidato();
-$result_excluir = $c->exibirTab_candidatoCod($_GET['cod_tab_candidato']);
+$result_excluir = $c->exibirTab_candidatoCod($_GET['cod_candidato']);
 $row_tab_candidato = $result_excluir->fetch(PDO::FETCH_ASSOC);
-$cod_tab_candidato = $_GET['cod_tab_candidato'];
+$cod_tab_candidato = $_GET['cod_candidato'];
 ?>
 <!-- Modal content-->
 <div class="modal-header">

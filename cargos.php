@@ -71,12 +71,12 @@ $result = $c->localizarCargos($_GET["localizar"]);
 	  </tr>
     </thead>
     <tbody>
-       <?php while($row_cargos = $result->fetch(PDO::FETCH_ASSOC)){ ?>
-         <tr><td><?php echo $row_cargos["cod_cargo"]; ?></td> 
-<td><?php echo $row_cargos["nome"]; ?></td> 
-<td><?php echo $row_cargos["descricao"]; ?></td> 
-<td><?php echo $row_cargos["status"]; ?></td> 
-<td><a data-toggle="modal" data-target="#myModal" href="forms/alterar_cargos.php?cod_cargos=<?php echo $row_cargos['cod_cargos']; ?>"> <span class="glyphicon glyphicon-pencil"></span> </a><a data-toggle="modal" data-target="#myModal" href="forms/excluir_cargos.php?cod_cargos=<?php echo $row_cargos["cod_cargos"]; ?>"> <span class="glyphicon glyphicon-trash"></span> </a></td>
+       <?php while($row_cargo = $result->fetch(PDO::FETCH_ASSOC)){ ?>
+         <tr><td><?php echo $row_cargo["cod_cargo"]; ?></td> 
+<td><?php echo $row_cargo["nome"]; ?></td> 
+<td><?php echo $row_cargo["descricao"]; ?></td> 
+<td><?php $status = $row_cargo["status"]; if($status == 1){echo "Aberta";}else{echo "Fechada";} ?></td> 
+<td><a data-toggle="modal" data-target="#myModal" href="forms/alterar_cargos.php?cod_cargo=<?php echo $row_cargo['cod_cargo']; ?>"> <span class="glyphicon glyphicon-pencil"></span> </a><a data-toggle="modal" data-target="#myModal" href="forms/excluir_cargos.php?cod_cargo=<?php echo $row_cargo["cod_cargo"]; ?>"> <span class="glyphicon glyphicon-trash"></span> </a></td>
         </tr>
          <?php } ?>
      </tbody>

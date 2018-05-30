@@ -50,8 +50,7 @@ public function getStatus() {
 
 public function inserirCargos(){
 try{$pdo = Database::conexao();
-$consulta = $pdo->prepare("INSERT into cargos(cod_cargo, nome, descricao, status) values (:cod_cargo, :nome, :descricao, :status);");
-$consulta->bindParam(':cod_cargo', $this->cod_cargo);
+$consulta = $pdo->prepare("INSERT into cargos(nome, descricao, status) values (:nome, :descricao, :status);");
 $consulta->bindParam(':nome', $this->nome);
 $consulta->bindParam(':descricao', $this->descricao);
 $consulta->bindParam(':status', $this->status);
@@ -79,10 +78,6 @@ $pdo = Database::conexao();
 try{
 $consulta = $pdo->prepare("DELETE FROM cargos WHERE cod_cargo = :cod_cargo;");
 $consulta->bindParam(':cod_cargo', $this->cod_cargo);
-$consulta->bindParam(':nome', $this->nome);
-$consulta->bindParam(':descricao', $this->descricao);
-$consulta->bindParam(':status', $this->status);
-
 $consulta->execute();
 header('Location: ../index.php');
 }catch(PDOException $e) {echo "Ocorreu um erro: $e";}
@@ -91,6 +86,15 @@ header('Location: ../index.php');
 public function exibirCargos(){
 $pdo = Database::conexao();
 $sql = "SELECT * FROM cargos order by cod_cargo DESC LIMIT 20";
+$consulta = $pdo->prepare($sql);
+$consulta->execute();
+return $consulta;
+
+}
+	
+public function exibirCargos_abertos(){
+$pdo = Database::conexao();
+$sql = "SELECT * FROM cargos where status = 1 order by nome ASC LIMIT 20";
 $consulta = $pdo->prepare($sql);
 $consulta->execute();
 return $consulta;

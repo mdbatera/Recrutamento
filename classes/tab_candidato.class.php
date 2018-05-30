@@ -13,6 +13,7 @@ public $cod_candidato;
 public $cpf;
 public $nome;
 public $email;
+public $cod_cargo;
 public $arquivo;
 
 
@@ -30,6 +31,10 @@ public function setNome($nome) {
 
 public function setEmail($email) {
  $this->email=$email;
+}
+	
+public function setCod_cargo($cod_cargo) {
+ $this->cod_cargo=$cod_cargo;
 }
 
 public function setArquivo($arquivo) {
@@ -51,6 +56,10 @@ public function getNome() {
 public function getEmail() {
  return $this->email;
 }
+	
+public function getCod_cargo() {
+ return $this->cod_cargo;
+}
 
 public function getArquivo() {
  return $this->arquivo;
@@ -59,11 +68,11 @@ public function getArquivo() {
 
 public function inserirTab_candidato(){
 try{$pdo = Database::conexao();
-$consulta = $pdo->prepare("INSERT into tab_candidato(cod_candidato, cpf, nome, email, arquivo) values (:cod_candidato, :cpf, :nome, :email, :arquivo);");
-$consulta->bindParam(':cod_candidato', $this->cod_candidato);
+$consulta = $pdo->prepare("INSERT into tab_candidato(cpf, nome, email, cod_cargo, arquivo) values (:cpf, :nome, :email, :cod_cargo,  :arquivo);");
 $consulta->bindParam(':cpf', $this->cpf);
 $consulta->bindParam(':nome', $this->nome);
 $consulta->bindParam(':email', $this->email);
+$consulta->bindParam(':cod_cargo', $this->cod_cargo);
 $consulta->bindParam(':arquivo', $this->arquivo);
 
 $consulta->execute();
@@ -73,11 +82,12 @@ header('Location: ../index.php');
 
 public function alterarTab_candidato(){
 $pdo = Database::conexao();
-try{$consulta = $pdo->prepare("UPDATE tab_candidato SET cod_candidato = :cod_candidato, cpf = :cpf, nome = :nome, email = :email, arquivo = :arquivo WHERE cod_candidato = :cod_candidato;");
+try{$consulta = $pdo->prepare("UPDATE tab_candidato SET cod_candidato = :cod_candidato, cpf = :cpf, nome = :nome, email = :email, cod_cargo = :cod_cargo, arquivo = :arquivo WHERE cod_candidato = :cod_candidato;");
 $consulta->bindParam(':cod_candidato', $this->cod_candidato);
 $consulta->bindParam(':cpf', $this->cpf);
 $consulta->bindParam(':nome', $this->nome);
 $consulta->bindParam(':email', $this->email);
+$consulta->bindParam(':cod_cargo', $this->cod_cargo);
 $consulta->bindParam(':arquivo', $this->arquivo);
 
 $consulta->execute();
@@ -90,11 +100,6 @@ $pdo = Database::conexao();
 try{
 $consulta = $pdo->prepare("DELETE FROM tab_candidato WHERE cod_candidato = :cod_candidato;");
 $consulta->bindParam(':cod_candidato', $this->cod_candidato);
-$consulta->bindParam(':cpf', $this->cpf);
-$consulta->bindParam(':nome', $this->nome);
-$consulta->bindParam(':email', $this->email);
-$consulta->bindParam(':arquivo', $this->arquivo);
-
 $consulta->execute();
 header('Location: ../index.php');
 }catch(PDOException $e) {echo "Ocorreu um erro: $e";}

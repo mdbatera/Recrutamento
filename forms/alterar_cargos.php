@@ -1,7 +1,7 @@
-<?php include('../../classes/cargos.class.php');
+<?php include('../classes/cargos.class.php');
 //Cria o Objeto
 $c = new Cargos();
-$result_alterar = $c->exibirCargosCod($_GET['cod_cargos']);
+$result_alterar = $c->exibirCargosCod($_GET['cod_cargo']);
 $row_cargos = $result_alterar->fetch(PDO::FETCH_ASSOC); ?>
 <!doctype html>
 <html>
@@ -29,7 +29,16 @@ $row_cargos = $result_alterar->fetch(PDO::FETCH_ASSOC); ?>
       <input type="text" id="descricao" class="form-control" name="descricao" required  value="<?php echo $row_cargos["descricao"]; ?>">
     </div><div class="form-group">
       <label for="Status">Status:</label>
-      <input type="text" id="status" class="form-control" name="status" required  value="<?php echo $row_cargos["status"]; ?>">
+	  <?php echo $tipo_vindo = $row_cargos["status"];
+	  $opcao1 = 1;
+	  $opcao2 = 2;
+	  ?>
+	  <select id="status" class="form-control" name="status" required>
+	    <option>Selecioner</option>
+	    <option value="<?php echo $opcao1; ?>" <?php if($tipo_vindo == $opcao1){echo "selected";} ?>>Aberta</option>
+	    <option value="<?php echo $opcao2; ?>" <?php if($tipo_vindo == $opcao2){echo "selected";} ?>>Fechada</option>
+	  </select>
+      
     </div> 	
     <input type="submit"  class="btn btn-primary" value="Alterar"  >
     <input type="hidden" name="MM_action" value="2">

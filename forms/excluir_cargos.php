@@ -1,10 +1,10 @@
 <?php 
-include('../../classes/cargos.class.php');
+include('../classes/cargos.class.php');
 //Cria o Objeto
 $c = new Cargos();
-$result_excluir = $c->exibirCargosCod($_GET['cod_cargos']);
+$result_excluir = $c->exibirCargosCod($_GET['cod_cargo']);
 $row_cargos = $result_excluir->fetch(PDO::FETCH_ASSOC);
-$cod_cargos = $_GET['cod_cargos'];
+$cod_cargos = $_GET['cod_cargo'];
 ?>
 <!-- Modal content-->
 <div class="modal-header">

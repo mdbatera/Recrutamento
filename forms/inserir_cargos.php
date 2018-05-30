@@ -12,28 +12,24 @@
     <div class="modal-content">
        <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Inserir Carreta</h4>
+        <h4 class="modal-title">Inserir cargos</h4>
       </div>
        <div class="modal-body">
         <form method="POST" name="form" action="processamento/processar_cargos.php" data-toggle="validator" role="form" >
 		
 
-	<div class="form-group">
-       <label for="cod_cargo">Cod_cargo</label>
-       <input type="text" id="cod_cargo" class="form-control" name="cod_cargo" required>
-    </div>
+	
 	<div class="form-group">
        <label for="nome">Nome</label>
        <input type="text" id="nome" class="form-control" name="nome" required>
     </div>
 	<div class="form-group">
        <label for="descricao">Descricao</label>
-       <input type="text" id="descricao" class="form-control" name="descricao" required>
+		<textarea id="descricao" class="form-control" name="descricao" required></textarea>
+       
+		<input type="hidden" name="status" id="status" value="2">
     </div>
-	<div class="form-group">
-       <label for="status">Status</label>
-       <input type="text" id="status" class="form-control" name="status" required>
-    </div><input  type="submit"  class="btn btn-success" >
+	<input  type="submit"  class="btn btn-success" >
            <input type="hidden" name="MM_action" value="1">
          </form>
       </div>

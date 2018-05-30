@@ -1,5 +1,5 @@
 <?php
-include_once('../../classes/cargos.class.php');
+include_once('../classes/cargos.class.php');
 
 
 //Cria o Objeto
@@ -7,12 +7,12 @@ $c = new Cargos();
 
 //Popula o objeto
 $MM_action = $_POST["MM_action"];
-if(isset($_POST['cod_cargos'])){
+if(isset($_POST['cod_cargo'])){
 	
-	$c->setCod_cargos($_POST['cod_cargos']);
-	}else{$c->setCod_cargos(0);} $c->setNome($_POST['nome']); 
+	$c->setCod_cargo($_POST['cod_cargo']);
+	}else{$c->setCod_cargo(0);} $c->setNome($_POST['nome']); 
 $c->setDescricao($_POST['descricao']); 
-$c->setStatus($_POST['status']); 
+$c->setStatus($_POST['status']);
 
 
 //Verifica o tipo da ação e salva no banco.

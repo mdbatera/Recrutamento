@@ -1,7 +1,7 @@
-<?php include('../../classes/tab_candidato.class.php');
+<?php include('../classes/tab_candidato.class.php');
 //Cria o Objeto
 $c = new Tab_candidato();
-$result_alterar = $c->exibirTab_candidatoCod($_GET['cod_tab_candidato']);
+$result_alterar = $c->exibirTab_candidatoCod($_GET['cod_candidato']);
 $row_tab_candidato = $result_alterar->fetch(PDO::FETCH_ASSOC); ?>
 <!doctype html>
 <html>

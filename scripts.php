@@ -1,8 +1,8 @@
 ﻿<!-- jQuery first, then Bootstrap JS -->
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-combobox.js"></script>
-<script src="../js/validator.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-combobox.js"></script>
+<script src="js/validator.min.js"></script>
 
 
 <script>
@@ -27,7 +27,7 @@ $(document).modal("hide").on("hidden.bs.modal", function () {
 //Esconder Alerts
 $().ready(function() {
 	setTimeout(function () {
-		$('.alert').fadeOut(); // "foo" é o id do elemento que seja manipular.
+		$('.alert_out').fadeOut(); // "fox	o" é o id do elemento que seja manipular.
 		
 	}, 2500); // O valor é representado em milisegundos.
 });

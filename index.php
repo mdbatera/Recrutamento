@@ -67,18 +67,21 @@ $result = $c->localizarTab_candidato($_GET["localizar"]);
       <th>Cpf</th>
       <th>Nome</th>
       <th>Email</th>
+	 <th>Cargo</th>
       <th>Arquivo</th>		
       <th>Ação</th>
 	  </tr>
     </thead>
     <tbody>
        <?php while($row_tab_candidato = $result->fetch(PDO::FETCH_ASSOC)){ ?>
-         <tr><td><?php echo $row_tab_candidato["cod_candidato"]; ?></td> 
-<td><?php echo $row_tab_candidato["cpf"]; ?></td> 
+         <tr> 
+<td><?php echo $row_tab_candidato["cod_candidato"]; ?></td>
+			 <td><?php echo $row_tab_candidato["cpf"]; ?></td>
 <td><?php echo $row_tab_candidato["nome"]; ?></td> 
 <td><?php echo $row_tab_candidato["email"]; ?></td> 
+<td><?php echo $row_tab_candidato["cod_cargo"]; ?></td> 
 <td><?php echo $row_tab_candidato["arquivo"]; ?></td> 
-<td><a data-toggle="modal" data-target="#myModal" href="forms/alterar_tab_candidato.php?cod_tab_candidato=<?php echo $row_tab_candidato['cod_tab_candidato']; ?>"> <span class="glyphicon glyphicon-pencil"></span> </a><a data-toggle="modal" data-target="#myModal" href="forms/excluir_tab_candidato.php?cod_tab_candidato=<?php echo $row_tab_candidato["cod_tab_candidato"]; ?>"> <span class="glyphicon glyphicon-trash"></span> </a></td>
+<td><a data-toggle="modal" data-target="#myModal" href="forms/alterar_tab_candidato.php?cod_candidato=<?php echo $row_tab_candidato['cod_candidato']; ?>"> <span class="glyphicon glyphicon-pencil"></span> </a><a data-toggle="modal" data-target="#myModal" href="forms/excluir_tab_candidato.php?cod_candidato=<?php echo $row_tab_candidato["cod_candidato"]; ?>"> <span class="glyphicon glyphicon-trash"></span> </a></td>
         </tr>
          <?php } ?>
      </tbody>
@@ -90,7 +93,9 @@ $result = $c->localizarTab_candidato($_GET["localizar"]);
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     
-   
+    <!-- Modal content-->
+<div class="modal-content">
+</div>
 
   </div>
  </div>
